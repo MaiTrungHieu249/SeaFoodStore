@@ -1,0 +1,24 @@
+﻿@model SeaFood
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title">
+            @Model.Title
+            <span class="badge badge-pill badge-primary">
+                <small>@Model.Price.ToString("c")</small>
+            </span>
+        </h5>
+        <form id="@Model.SeaFoodID" asp-page="/MyCart" method="post">
+            <input type="hidden" asp-for="SeaFoodID" />
+            <input type="hidden" name="returnUrl"
+                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <div class="card-text p-1">
+                <strong>@Model.Genre</strong>
+                <p>@Model.weight</p>
+                <button type="submit"
+                        class="btn btn-warning btn-sm pull-right">
+                    Add To Cart
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
